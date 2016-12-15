@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 
 export default class Article extends Component {
     state = {
-        isOpen: false
+        isOpen: false,
+	isCommentOpen: false
     }
+
 
 /*
     constructor() {
@@ -30,12 +32,30 @@ export default class Article extends Component {
         })
     }
 
+    toggleShowCommentOpen = () => {
+        this.setState({
+            isCommentOpen: !this.state.isCommentOpen
+        })
+    }
+
     getBody() {
         if (!this.state.isOpen) return null
         return (
             <section>
                 {this.props.article.text}
+                <br/>
+                <button onClick = {this.toggleShowCommentOpen}>{this.getTitle()}</button>
+                
             </section>
+
         )
+    }
+
+    getTitle() {
+        if (this.state.isCommentOpen) {
+            return ('hide')
+        } else {
+            return ('show')
+        }
     }
 }
