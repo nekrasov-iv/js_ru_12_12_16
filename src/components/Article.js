@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import CommentList from './CommentList';
 
 export default class Article extends Component {
     state = {
@@ -45,7 +46,7 @@ export default class Article extends Component {
                 {this.props.article.text}
                 <br/>
                 <button onClick = {this.toggleShowCommentOpen}>{this.getTitle()}</button>
-                
+		{this.getComments()}
             </section>
 
         )
@@ -58,4 +59,11 @@ export default class Article extends Component {
             return ('show')
         }
     }
+
+    getComments() {
+        if (this.state.isCommentOpen) {
+            return (<CommentList comments={ this.props.article.comments } />)
+        }
+    }
+
 }
